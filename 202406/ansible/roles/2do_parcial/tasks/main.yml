@@ -1,0 +1,24 @@
+---
+# tasks file for 2do_parcial
+
+- debug:
+    msg: "Tareas del 2do Parcial"
+
+- name: "Crear directorios en /tmp/2do_parcial/"
+  file:
+    path: "/tmp/2do_parcial/{{ item }}"
+    state: directory
+    recurse: yes
+  with_items: 
+    - "Alumno"
+    - "PC"
+
+- name: "Agrego archivo alumno desde template"
+  template:
+    src: template01.j2
+    dest: /tmp/2do_parcial/alumno/datos_alumno.txt
+
+- name: "Agrego archivo equipo template"
+  template:
+    src: template02.j2
+    dest: /tmp/2do_parcial/equipo/datos_equipo.txt
